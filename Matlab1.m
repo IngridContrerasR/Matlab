@@ -103,3 +103,88 @@ clc; clear;
 for sentence={'hoy','el','día','está'}
     disp(sentence);
 end
+
+%% charting
+
+%% grafico basico
+clc;clear;
+x=[1 3 5 7 9 11 13 15 17 19 21];
+y=[100 90 80 10 20 30 50 60 70 40 110];
+plot(x,y)
+
+%% grafico 2
+clc;clear;
+x=[1 3 5 7 9 11 13 15 17 19 21];
+y=[100 90 80 10 20 30 50 60 70 40 110];
+plot(x,y,'o')
+
+%% grafico grid
+clc;clear;
+x=[1 3 5 7 9 11 13 15 17 19 21];
+y=[100 90 80 10 20 30 50 60 70 40 110];
+plot(x,y.^2)
+grid
+
+%% grafico barras
+clc;clear;
+x=[1 3 5 7 9 11 13 15 17 19 21];
+y=[100 90 80 10 20 30 50 60 70 40 110];
+bar(x,y)
+grid
+
+%% grafico 
+clc;clear;
+figure1=figure;
+x=0:0.5:4;
+y_modelo=x/2+0.5;
+y_medidos=[0.39 0.66 1.07 1.15 1.43 1.69 1.90 2.34 2.55];
+plot(x,y_modelo,'-',x,y_medidos,'o')
+legend('datos modelo','dato experimental')
+grid
+title('Valores de cortisol diario')
+xlabel('tiempo(horas)')
+ylabel('concentración sérica(ul/l)')
+saveas(figure1,'results/grafico.jpg')
+
+
+%% grafico 7
+
+clc;clear;
+x=0:0.5:4;
+y_modelo=x/2+0.5;
+y_medidos=[0.39 0.66 1.07 1.15 1.43 1.69 1.90 2.34 2.55];
+y_error=y_medidos-y_modelo;
+errorbar(x,y_modelo,y_error)
+legend('datos modelo','dato experimental')
+grid
+title('Valores de cortisol diario')
+xlabel('tiempo(horas)')
+ylabel('concentración sérica(ul/l)')
+
+%% multigrafico
+
+clc;clear;
+figure1=figure;
+subplot(1,2,1);
+x=0:0.5:4;
+y_modelo=x/2+0.5;
+y_medidos=[0.39 0.66 1.07 1.15 1.43 1.69 1.90 2.34 2.55];
+plot(x,y_modelo,'-',x,y_medidos,'o')
+legend('datos modelo','dato experimental','fontsize',8)
+grid
+title('Valores de cortisol pre examen','fontsize',16)
+xlabel('tiempo(horas)')
+ylabel('concentración sérica(ul/l)','fontsize',12)
+
+subplot(1,2,2);
+x=0:0.5:4;
+y_modelo=x/2+0.5;
+y_medidos=[0.39 0.66 1.07 1.15 1.43 1.69 1.90 2.34 2.55];
+y_error=y_medidos-y_modelo;
+errorbar(x,y_modelo,y_error)
+legend('datos modelo','dato experimental')
+grid
+title('Valores de cortisol por hora')
+xlabel('tiempo(horas)')
+ylabel('concentración sérica(ul/l)')
+saveas(figure1, 'results/multigrafico.jpg')
